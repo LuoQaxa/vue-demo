@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="val">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Sex</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="people in filteredPeople">
+					<td>{{people.name}}</td>
+					<td>{{people.age}}</td>
+					<td>{{people.sex}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+	<script>
+		  
+	
+		new Vue({
+			el:'#app',
+			data:function(){
+				return {
+					val:'',
+					PeopleArr:[
+					{name:'jack',age:'21',sex:'famale'},
+					{name:'rose',age:'25',sex:'male'},
+					{name:'mike',age:'56',sex:'famale'},
+					]
+				}
+				//从视图传入的值，然后到model端进行处理，
+			},
+			computed:{
+		            	filteredPeople:function(){
+		            		var self = this;
+		            		//将数组中的每一项对象都在这个回调函数里面进行测试，
+		            		//如果返回true则新成立一个数组
+		            		return self.PeopleArr.filter(function(people){
+		            			//把所有的
+		    					var query = self.val.toLowerCase();       			
+		            			return  people.name.indexOf(query) !== -1 || people.age.indexOf(query) !== -1 || people.sex.indexOf(query) !== -1
+		            		})
+		            	}
+		            }
+		})
+	</script>
+</body>
+</html>
