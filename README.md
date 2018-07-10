@@ -7,3 +7,14 @@
 
 4. `parcel`会根据你项目的需要自动安装所有项目依赖
 
+#### button组件的开发
+1. `solt`用于从父组件传递信息到子组件
+2. 图标采用的将svg上传到iconfont上，采用symbol的方式引入
+3. 如何解决图标在左右两侧可配置，button采用display:inline-flex，用类来控制icon和文字的order顺序
+
+#### icon组件
+
+#### button-group
+1. 遇到了一个经典的css问题，两个button排在一起的时候，中间只需要一条border，
+如果采用除第一个元素外的border-left:none，在hover的时候会出现问题，最终解决方案是所有margin-left:-1 , hover时采用position:relative z-index:1
+
